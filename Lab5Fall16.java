@@ -33,7 +33,7 @@ public class Lab5Fall16 {
 			String str = prefix + word;
 			if(chain.search(str)) {
 				System.out.println(str);
-				//chain.delete(str);
+				chain.delete(str);
 			}
 		}
 		
@@ -50,7 +50,7 @@ public class Lab5Fall16 {
 	/* FillwordSet Method */
 	private static void fillWordSetProbing(HashTableA englishWordSet){
 
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/shawnimitch/Documents/School/Eclipse/Lab3/src/Lab3Anagram/words.txt"))){
+		try(BufferedReader br = new BufferedReader(new FileReader("/Directory/words.txt"))){
 			String currentLine;
 			while((currentLine = br.readLine()) != null){
 				String w = currentLine;
@@ -125,17 +125,6 @@ public class Lab5Fall16 {
 		int tableSize;
 		String word;
 		
-		long startTimeChaining=0;
-		long endTimeChaining=0;
-		long totalTimeChaining=0;
-		
-		long startTimeProbing=0;
-		long endTimeProbing=0;
-		long totalTimeProbing=0;
-		
-		long startTimeSet=0;
-		long endTimeSet=0;
-		long totalTimeSet=0;
 		
 		System.out.println("**************** WELCOME TO LAB 5 ************************");
 		System.out.println();
@@ -156,12 +145,8 @@ public class Lab5Fall16 {
 			System.out.println("What is the word you want to Print Anagrams of?");
 			word = in.next();
 			
-			startTimeChaining=System.nanoTime();
 			printAnagramsLL(chain,"",word);
-			endTimeChaining=System.nanoTime();
-			totalTimeChaining=endTimeChaining-startTimeChaining;
-			System.out.println();
-			System.out.println("The time for linear chaining is : " + totalTimeChaining);
+			
 			break;
 			
 		case 2:
@@ -175,12 +160,7 @@ public class Lab5Fall16 {
 			System.out.println("What is the word you want to Print Anagrams of?");
 			word = in.next();
 			
-			startTimeProbing = System.nanoTime();
 			printAnagramsProbing(probe,"",word);
-			endTimeProbing = System.nanoTime();
-			totalTimeProbing = endTimeProbing - startTimeProbing;
-			System.out.println();
-			System.out.println("The time for linear probing is : " + totalTimeProbing);
 			break;
 			
 		case 3:
@@ -189,13 +169,8 @@ public class Lab5Fall16 {
 			
 			System.out.println("What is the word you want to Print Anagrams of?");
 			word = in.next();
-			
-			startTimeSet = System.nanoTime();
+
 			printAnagrams(englishWordSet,"",word);
-			endTimeSet = System.nanoTime();
-			totalTimeSet = endTimeSet - startTimeSet;
-			System.out.println();
-			System.out.println("The time for Hash Set is : " + totalTimeSet);
 			break;
 			
 		default:
